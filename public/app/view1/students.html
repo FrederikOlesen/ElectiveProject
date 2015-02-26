@@ -1,0 +1,14 @@
+<html ng-app="myAppRename" ng-controller="AppCtrl">
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr ng-repeat="student in students">
+                <td>{{student.studentID}}</td>
+            </tr>
+        </table>
+    </div>
