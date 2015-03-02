@@ -1,14 +1,18 @@
-<html ng-app="myAppRename" ng-controller="AppCtrl">
+<html ng-controller="View1Ctrl">
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <tr>
-                <th>Student ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            <tr ng-repeat="student in students">
-                <td>{{student.studentID}}</td>
-            </tr>
-        </table>
-    </div>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Teachers</th>
+            <th>Select</th>
+        </tr>
+        <tr ng-repeat="student in students">
+            <td>{{student.title}}</td>
+            <td>{{student.description}}</td>
+            <td>{{student.teachers}}</td>
+            <td><input type="checkbox"/></td>
+        </tr>
+    </table>
+</div>
