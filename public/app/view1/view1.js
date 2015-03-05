@@ -9,7 +9,7 @@ angular.module('myAppRename.view1', ['ngRoute'])
         });
     }])
 
-    .controller('View1Ctrl', ['$scope', '$http', function ($scope, $http) {
+    .controller('View1Ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
         $http({
             method: 'GET',
             url: 'http://localhost:8080/data'
@@ -17,11 +17,16 @@ angular.module('myAppRename.view1', ['ngRoute'])
         }).
             success(function (data) {
                 var json = angular.toJson(data);
-                console.log("Data: " + data);
                 $scope.students = data;
+
             }).
-            error(function (data) {
-                $scope.error = data;
+            error(function (status) {
+                var showInfo = true;
+                if (status != 200) {
+                    $scope.showInfo = showInfo;
+                    $scope.color = "danger";
+                    $scope.message = "Could not get any data. Please try reload the page!";
+                }
             });
         $scope.open = function (item) {
 
@@ -48,6 +53,16 @@ angular.module('myAppRename.view1', ['ngRoute'])
             $http
                 .post("http://localhost:8080/addRoundOne/", json)
                 .success(function (data, status) {
+                    var showInfo = true;
+                    if (status == 200) {
+                        $scope.showInfo = showInfo;
+                        $scope.color = "success";
+                        $scope.message = "Subject added!";
+                        $scope.emptyFields = "";
+                        $timeout(function () {
+                            $scope.showInfo = false;
+                        }, 3500);
+                    }
                 })
                 .error(function (data, status, error) {
                     $scope.error = data;

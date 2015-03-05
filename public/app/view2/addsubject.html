@@ -1,28 +1,31 @@
 <div ng-model="View2Ctrl">
-    <div class="alert alert-{{color}}" role="alert" ng-show="showInfo"><center>{{message}}</center></div>
-    <div style="padding-top: 50px">
-        <div class="text-center">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label class="sr-only">Subject Title</label>
-                    <input type="text" class="form-control" id="subjecttitle" ng-model="subjecttitle"
-                           placeholder="Enter Subject Title">
+    <div class="alert alert-{{color}}" role="alert" ng-show="showInfo">
+        <center>{{message}}</center>
+    </div>
+    <div class="centered">
+        <div style="padding-top: 50px">
+            <div class="text-center">
+                <div class="col-lg-4">
+                    <div class="col-lg-12">
+                        <form name="fields">
+                            <div class="form-group">
+                                <input class="form-control input-lg" ng-model='subjecttitle'
+                                       placeholder="Enter Subject Title.." required="">
+                                <br>
+                                <input class="form-control input-lg" ng-model='description'
+                                       placeholder="Enter Description.." required="">
+                                <br>
+                                <input class="form-control input-lg" ng-model='teacher'
+                                       placeholder="Enter Teacher.." required="">
+                                <br>
+                            </div>
+                        </form>
+                    </div>
+                    <a class="btn btn-primary btn-lg" href="" ng-click="saveSubject(true)"
+                       ng-disabled="fields.$invalid" role="button">Add</a>
+                    <br>
                 </div>
-                <div class="form-group">
-                    <label class="sr-only">Description</label>
-                    <input type="text" class="form-control" id="description" ng-model="description"
-                           placeholder="Enter Description">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only">Teacher</label>
-                    <input type="text" class="form-control" id="teacher" ng-model="teacher"
-                           placeholder="Enter Teacher Name">
-                </div>
-                <button type="submit" class="btn btn-primary" ng-click="saveSubject(true)"><span
-                        class="glyphicon glyphicon-plus"></span> Add
-                </button>
-            </form>
-
+            </div>
         </div>
     </div>
 </div>
