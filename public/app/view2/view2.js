@@ -14,7 +14,7 @@ angular.module('myAppRename.view2', ['ngRoute'])
             var data = {
                 title: $scope.subjecttitle,
                 description: $scope.description,
-                teachers: $scope.teacher
+                teacher: $scope.teacher
             }
 
             var json = angular.toJson(data);
@@ -22,7 +22,7 @@ angular.module('myAppRename.view2', ['ngRoute'])
             console.log("JSON : " + json);
 
             $http.post('http://localhost:8080/data/', json)
-               .success(function (data) {
+                .success(function (data) {
                     console.log("Data: " + data);
                     $scope.students = data;
                 }).
