@@ -23,10 +23,14 @@ angular.module('myAppRename.view1', ['ngRoute'])
             error(function (data) {
                 $scope.error = data;
             });
-        $scope.removeRow = function removeRow(row) {
-            var index = $scope.rowCollection.indexOf(row);
+        $scope.removeRow = function removeRow(student) {
+            var getStudent = student;
+            console.log("getStudent: " + getStudent);
+            $scope.getStudent = getStudent;
+            var index = $scope.students.indexOf(student);
+
             if (index !== -1) {
-                $scope.rowCollection.splice(index, 1);
+                $scope.students.splice(index, 1);
             }
         }
     }]);

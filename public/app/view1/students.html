@@ -1,7 +1,7 @@
 <html ng-controller="View1Ctrl">
 
 <div class="table-responsive">
-    <table st-table="rowCollection" class="table table-striped">
+    <table st-table="subjectCollection" class="table table-striped">
         <thead>
         <tr>
             <th>Subject</th>
@@ -13,9 +13,8 @@
         <tr ng-repeat="student in students">
             <td>{{student.title}}</td>
             <td>{{student.description}}</td>
-            <td>{{student.teachers}}</td>
             <td>
-                <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+                <button type="button" ng-click="removeRow(student)" class="btn btn-sm btn-danger">
                     <i class="glyphicon glyphicon-remove-circle">
                     </i>
                 </button>
@@ -24,3 +23,30 @@
         </tbody>
     </table>
 </div>
+
+<h1>Valgte fag</h1>
+
+<div class="table-responsive">
+    <table st-table="subjectCollections" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Teacher</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="subject in getStudent">
+            <td>{{subject.title}}</td>
+            <td>{{subject.description}}</td>
+            <td>
+                <button type="button" ng-click="removeRow(student)" class="btn btn-sm btn-danger">
+                    <i class="glyphicon glyphicon-remove-circle">
+                    </i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{{getStudent}}
