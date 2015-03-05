@@ -1,18 +1,26 @@
 <html ng-controller="View1Ctrl">
 
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table st-table="rowCollection" class="table table-striped">
+        <thead>
         <tr>
-            <th>#</th>
             <th>Subject</th>
             <th>Description</th>
-            <th>Teachers</th>
+            <th>Teacher</th>
         </tr>
+        </thead>
+        <tbody>
         <tr ng-repeat="student in students">
-            <td><button type="button" class="btn btn-success" ng-click="addToOtherTable(student)" ng-model="table">Tilføj</button></td>
             <td>{{student.title}}</td>
             <td>{{student.description}}</td>
-            <td>{{student.teacher}}</td>
+            <td>{{student.teachers}}</td>
+            <td>
+                <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+                    <i class="glyphicon glyphicon-remove-circle">
+                    </i>
+                </button>
+            </td>
         </tr>
+        </tbody>
     </table>
 </div>

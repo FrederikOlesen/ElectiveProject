@@ -23,10 +23,10 @@ angular.module('myAppRename.view1', ['ngRoute'])
             error(function (data) {
                 $scope.error = data;
             });
-        $scope.addToOtherTable = function addToOtherTable(row){
-            var index = $scope.table.indexOf(row);
-            if(index !== -1){
-                $scope.table.splice(index, 1);
+        $scope.removeRow = function removeRow(row) {
+            var index = $scope.rowCollection.indexOf(row);
+            if (index !== -1) {
+                $scope.rowCollection.splice(index, 1);
             }
         }
     }]);
