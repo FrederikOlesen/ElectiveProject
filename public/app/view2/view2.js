@@ -9,8 +9,8 @@ angular.module('myAppRename.view2', ['ngRoute'])
         });
     }])
 
-    .controller('View2Ctrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.saveSubject = function () {
+    .controller('View2Ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+        $scope.saveSubject = function (showInfo) {
             var data = {
                 title: $scope.subjecttitle,
                 description: $scope.description,
@@ -22,12 +22,25 @@ angular.module('myAppRename.view2', ['ngRoute'])
             console.log("JSON : " + json);
 
             $http.post('http://localhost:8080/data/', json)
-                .success(function (data) {
-                    console.log("Data: " + data);
-                    $scope.students = data;
+                .success(function (data, status) {
+                    if (status == 200) {
+                        $scope.showInfo = showInfo;
+                        $scope.color = "success";
+                        $scope.message = "Subject added!";
+                        $scope.emptyFields = "";
+                        $timeout(function () {
+                            $scope.showInfo = false;
+                        }, 3500);
+                    }
+
                 }).
-                error(function (data) {
-                    $scope.error = data;
+                error(function (status) {
+                    if (status != 200) {
+                        $scope.showInfo = showInfo;
+                        $scope.color = "danger";
+                        $scope.message = "Something went wrong.. Please try again!";
+                    }
                 });
         }
+
     }]);

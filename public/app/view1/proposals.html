@@ -1,0 +1,51 @@
+<html ng-controller="View1Ctrl">
+<h1>Suggested Subjects</h1>
+<hr>
+<div>
+    <div class="col-md-6">
+        <div class="table-responsive">
+            <table class="table table-hover" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Subject</th>
+                    <!--<th>Description</th>-->
+                    <th>Teacher</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="student in students">
+                    <td class="active" ng-click="open(student)">{{student.title}}</td>
+                    <!--<td ng-click="open(student)">{{student.description}}</td>-->
+                    <td class="active" ng-click="open(student)">Tobias Grundtvig</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4">
+        <br>
+        <ng-switch on="anyItemOpen()">
+            <div ng-switch-when="true" name="movieDetails" class="panel panel-primary"
+                 style="position: fixed; width:500px;">
+                <div class="panel-heading">
+                    <h3>Details</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div>
+                                <h4><b>Subject:</b> {{opened.title}}</h4>
+                                <h4><b>Description:</b> {{opened.description}}</h4>
+                                <h4><b>Teacher:</b> {{opened.teacher}}</h4>
+                            </div>
+                            <a class="btn btn-success btn-lg" ng-click="addToFirstRound(opened.title, opened.description, opened.teacher)" role="button" href=""
+                               onclick="document.location.reload(true)">Add to First Round</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-switch>
+    </div>
+</div>

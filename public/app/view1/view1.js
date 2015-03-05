@@ -4,7 +4,7 @@ angular.module('myAppRename.view1', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/view1', {
-            templateUrl: '/view1/students.html',
+            templateUrl: '/view1/proposals.html',
             controller: 'View1Ctrl'
         });
     }])
@@ -23,14 +23,34 @@ angular.module('myAppRename.view1', ['ngRoute'])
             error(function (data) {
                 $scope.error = data;
             });
-        $scope.removeRow = function removeRow(student) {
-            var getStudent = student;
-            console.log("getStudent: " + getStudent);
-            $scope.getStudent = getStudent;
-            var index = $scope.students.indexOf(student);
+        $scope.open = function (item) {
 
-            if (index !== -1) {
-                $scope.students.splice(index, 1);
+            if ($scope.isOpen(item)) {
+                $scope.opened = undefined;
+            } else {
+                $scope.opened = item;
             }
-        }
+        };
+        $scope.isOpen = function (item) {
+            return $scope.opened === item;
+        };
+        $scope.anyItemOpen = function () {
+            return $scope.opened !== undefined;
+        };
+        $scope.addToFirstRound = function (title, description, teacher) {
+            var data = {
+                "title": title,
+                "description": description,
+                "teacher": teacher
+            };
+            var json = angular.toJson(data)
+            console.log(json);
+            $http
+                .post("http://localhost:8080/addRoundOne/", json)
+                .success(function (data, status) {
+                })
+                .error(function (data, status, error) {
+                    $scope.error = data;
+                });
+        };
     }]);
