@@ -51,7 +51,7 @@ angular.module('myAppRename.view1', ['ngRoute'])
             var json = angular.toJson(data)
             console.log(json);
             $http
-                .post("http://localhost:8080/addRoundOne/", json)
+                .post("http://localhost:8080/addRoundOne", json)
                 .success(function (data, status) {
                     var showInfo = true;
                     if (status == 200) {

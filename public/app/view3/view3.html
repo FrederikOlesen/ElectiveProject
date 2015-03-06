@@ -1,34 +1,23 @@
 <html ng-controller="View3Ctrl">
 
-
-<table st-table="rowCollection" class="table table-striped">
-  <thead>
-  <tr>
-    <th>first name</th>
-    <th>last name</th>
-    <th>birth date</th>
-    <th>balance</th>
-    <th>email</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="row in rowCollection">
-    <td>{{row.firstName | uppercase}}</td>
-    <td>{{row.lastName}}</td>
-    <td>{{row.birthDate | date}}</td>
-    <td>{{row.balance | currency}}</td>
-    <td>
-      <button class="btn btn-sm" popover-placement="top" popover="{{row.email}}" type="button">
-        <i class="glyphicon glyphicon-eye-open"></i>
-      </button>
-      <a ng-href="mailto:{{row.email}}">email</a></td>
-    <td>
-      <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
-        <i class="glyphicon glyphicon-remove-circle">
-        </i>
-      </button>
-    </td>
-  </tr>
-  </tbody>
-</table>
-
+<div>
+    <div class="col-md-6">
+        <div class="table-responsive">
+            <table class="table table-hover" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Teacher</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="person in persons">
+                    <td>{{person.title}}</td>
+                    <td>{{person.description}}</td>
+                    <td>{{person.teacher}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

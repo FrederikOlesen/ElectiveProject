@@ -21,7 +21,7 @@ angular.module('myAppRename.view2', ['ngRoute'])
 
             console.log("JSON : " + json);
 
-            $http.post('http://localhost:8080/data/', json)
+            $http.post('http://localhost:8080/data', json)
                 .success(function (data, status) {
                     if (status == 200) {
                         $scope.showInfo = showInfo;
@@ -33,8 +33,8 @@ angular.module('myAppRename.view2', ['ngRoute'])
                         }, 3500);
                     }
 
-                }).
-                error(function (status) {
+                })
+                .error(function (status) {
                     if (status != 200) {
                         $scope.showInfo = showInfo;
                         $scope.color = "danger";
