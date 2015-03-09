@@ -21,7 +21,7 @@ angular.module('myAppRename.view2', ['ngRoute'])
 
             console.log("JSON : " + json);
 
-            $http.post('http://localhost:8080/data', json)
+            $http.post('http://localhost:8080/proposal', json)
                 .success(function (data, status) {
                     if (status == 200) {
                         $scope.showInfo = showInfo;
