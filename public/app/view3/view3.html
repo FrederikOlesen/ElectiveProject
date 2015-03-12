@@ -3,64 +3,115 @@
     <center>{{message}}</center>
 </div>
 <hr>
-<div>
-    <div class="col-md-6">
-        <div class="table-responsive">
-            <table class="table table-hover" class="table table-striped">
+<div class="row">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="table-responsive">
+                <table class="table table-hover" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Teacher</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="person in persons">
+                        <td class="active" ng-click="open(person)"><b>{{person.title}}</b></td>
+                        <td class="active" ng-click="open(person)">{{person.teacher}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Subject</th>
-                    <!--<th>Description</th>-->
-                    <th>Teacher</th>
+                    <th>1. Priority</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="person in persons">
-                    <td class="active" ng-click="open(person)"><b>{{person.title}}</b></td>
-                    <!--<td ng-click="open(student)">{{student.description}}</td>-->
-                    <td class="active" ng-click="open(person)">{{person.teacher}}</td>
+                <tr>
+                    <td><h4><b>{{aaPriority.Title}}</b></h4></td>
+                    <td>
+                        <button class="btn btn-danger btn"
+                                ng-click="removeaa(aaPriority)"
+                                role="button" style="float: right;">Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h4><b>{{abPriority.Title}}</b></h4></td>
+                    <td>
+                        <button class="btn btn-danger btn"
+                                ng-click="removeab(abPriority)"
+                                role="button" style="float: right;">Remove
+                        </button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
-
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>2. Priority</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><h4><b>{{baPriority.Title}}</b></h4></td>
+                    <td>
+                        <button class="btn btn-danger btn"
+                                ng-click="removeba(baPriority)"
+                                role="button" style="float: right;">Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h4><b>{{bbPriority.Title}}</b></h4></td>
+                    <td>
+                        <button class="btn btn-danger btn"
+                                ng-click="removebb(bbPriority)"
+                                role="button" style="float: right;">Remove
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
             <a class="btn btn-success btn-lg" ng-click="voteFirstRound()" role="button" href=""
-            >Save</a>
+                    >Save</a>
         </div>
-    </div>
-    <div>
-        <h4><b>1. Priority:</b> {{aaPriority.Title}}</h4>
-        <h4><b>1. Priority:</b> {{abPriority.Title}}</h4>
-        <h4><b>2. Priority:</b> {{baPriority.Title}}</h4>
-        <h4><b>2. Priority:</b> {{bbPriority.Title}}</h4>
-    </div>
-
-
-    <div class="col-lg-4">
-        <br>
-        <ng-switch on="anyItemOpen()">
-            <div ng-switch-when="true" name="movieDetails" class="panel panel-primary"
-                 style="position: fixed; width:500px;">
-                <div class="panel-heading">
-                    <h3>Details</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div>
-                                <h4><b>Subject:</b> {{opened.title}}</h4>
-                                <h4><b>Description:</b> {{opened.description}}</h4>
-                                <h4><b>Teacher:</b> {{opened.teacher}}</h4>
+        <div>
+            <div class="col-lg-6">
+                <ng-switch on="anyItemOpen()">
+                    <div ng-switch-when="true" name="movieDetails" class="panel panel-primary"
+                         style="position: fixed; width:500px;">
+                        <div class="panel-heading">
+                            <h3>Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div>
+                                        <h4><b>Subject:</b> {{opened.title}}</h4>
+                                        <h4><b>Description:</b> {{opened.description}}</h4>
+                                        <h4><b>Teacher:</b> {{opened.teacher}}</h4>
+                                    </div>
+                                    <button class="btn btn-success btn-lg {{buttonStateFirst}}" name="1stprio"
+                                            ng-click="addToFirstPriority(opened.title, opened.description, opened.teacher, 1)"
+                                            role="button">1st priority
+                                    </button>
+                                    <button class="btn btn-success btn-lg {{buttonStateSecond}}" name="2ndprio"
+                                            ng-click="addToSecondPriority(opened.title, opened.description, opened.teacher, 2)"
+                                            role="button">2nd priority
+                                    </button>
+                                </div>
                             </div>
-                            <button class="btn btn-success btn-lg {{buttonStateFirst}}" name="1stprio"
-                                    ng-click="addToFirstPriority(opened.title, opened.description, opened.teacher, 1)"
-                                    role="button">1st priority</button>
-                            <button class="btn btn-success btn-lg {{buttonStateSecond}}" name="2ndprio"
-                                    ng-click="addToSecondPriority(opened.title, opened.description, opened.teacher, 2)"
-                                    role="button">2nd priority</button>
                         </div>
                     </div>
-                </div>
+                </ng-switch>
             </div>
-        </ng-switch>
+        </div>
     </div>
 </div>

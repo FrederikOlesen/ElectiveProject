@@ -12,7 +12,7 @@ angular.module('myAppRename.view1', ['ngRoute'])
     .controller('View1Ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/data'
+            url: 'http://localhost:8080/proposal'
 
         }).
             success(function (data) {

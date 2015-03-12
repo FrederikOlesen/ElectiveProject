@@ -15,7 +15,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
         var list = [];
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/addRoundOne'
+            url: 'http://localhost:8080/firstRound'
 
         }).success(function (data) {
             console.log("JSON: " + angular.toJson(data));
@@ -45,7 +45,9 @@ angular.module('myAppRename.view3', ['ngRoute'])
             return $scope.opened !== undefined;
         };
         $scope.addToFirstPriority = function (title, description, teacher, pri) {
-            var json = {"Title" : title, "Description" : description, "Teacher" : teacher, "Priority" : pri}
+            var json = {"Title": title, "Description": description, "Teacher": teacher, "Priority": pri}
+
+
             if (alength > 2) {
                 $scope.aaPriority = json;
                 list.push(json)
@@ -58,12 +60,12 @@ angular.module('myAppRename.view3', ['ngRoute'])
                     list.push(json)
                 }
             }
-            if(alength == 0){
+            if (alength == 0) {
                 $scope.buttonStateFirst = "btn-lg disabled"
             }
         }
         $scope.addToSecondPriority = function (title, description, teacher, pri) {
-            var json = {"Title" : title, "Description" : description, "Teacher" : teacher, "Priority" : pri}
+            var json = {"Title": title, "Description": description, "Teacher": teacher, "Priority": pri}
             if (blength > 2) {
                 $scope.baPriority = json;
                 blength = 1
@@ -77,13 +79,61 @@ angular.module('myAppRename.view3', ['ngRoute'])
                 }
             }
 
-            if(blength == 0){
+            if (blength == 0) {
                 $scope.buttonStateSecond = "btn-lg disabled"
             }
 
         }
+        $scope.removeaa = function (element) {
+            var remove = list.indexOf(element)
+            if (remove > -1) {
+                list.splice(remove, 1)
+                element;
+                $scope.aaPriority = "";
+                alength = 3;
+                $scope.buttonStateFirst = "btn-lg enabled"
+            }
+            console.log(angular.toJson(list));
+        };
+        $scope.removeab = function (element) {
+            var remove = list.indexOf(element)
+            if (remove > -1) {
+                list.splice(remove, 1)
+                element;
+                $scope.abPriority = "";
+                alength = 1;
+                $scope.buttonStateFirst = "btn-lg enabled"
+            }
+            console.log(angular.toJson(list));
+        };
+        $scope.removeba = function (element) {
+            var remove = list.indexOf(element)
+            if (remove > -1) {
+                list.splice(remove, 1)
+                element;
+                $scope.baPriority = "";
+                blength = 3;
+                $scope.buttonStateSecond = "btn-lg enabled"
+            }
+            console.log(angular.toJson(list));
+        };
+        $scope.removebb = function (element) {
+            var remove = list.indexOf(element)
+            if (remove > -1) {
+                list.splice(remove, 1)
+                element;
+                $scope.bbPriority = "";
+                blength = 1;
+                $scope.buttonStateSecond = "btn-lg enabled"
+            }
+            console.log(angular.toJson(list));
+        };
+
         $scope.voteFirstRound = function () {
+            console.log(list.toString());
             var newjson = angular.toJson(list);
+            lis
+
             $http
                 .post("http://localhost:8080/firstRound/priorities", newjson)
                 .success(function (data, status) {
