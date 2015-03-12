@@ -12,13 +12,12 @@ angular.module('myAppRename.view1', ['ngRoute'])
     .controller('View1Ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/proposal'
+            url: 'http://localhost:8080/firstRound/proposal'
 
         }).
             success(function (data) {
                 var json = angular.toJson(data);
                 $scope.students = data;
-
             }).
             error(function (status) {
                 var showInfo = true;
@@ -51,7 +50,7 @@ angular.module('myAppRename.view1', ['ngRoute'])
             var json = angular.toJson(data)
             console.log(json);
             $http
-                .post("http://localhost:8080/firstRound", json)
+                .post("http://localhost:8080/firstRound/subject", json)
                 .success(function (data, status) {
                     var showInfo = true;
                     if (status == 200) {

@@ -15,7 +15,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
         var list = [];
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/firstRound'
+            url: 'http://localhost:8080/firstRound/subject'
 
         }).success(function (data) {
             console.log("JSON: " + angular.toJson(data));
