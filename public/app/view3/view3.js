@@ -9,7 +9,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
         });
     }])
 
-    .controller('View3Ctrl', function ($scope, $http) {
+    .controller('View3Ctrl', function ($scope, $http, $timeout) {
         var alength = 3;
         var blength = 3;
         var list = [];
@@ -130,12 +130,13 @@ angular.module('myAppRename.view3', ['ngRoute'])
         };
 
         $scope.voteFirstRound = function () {
-            console.log(list.toString());
+
             var newjson = angular.toJson(list);
-            lis
+
+
 
             $http
-                .post("http://localhost:8080/firstRound/priorities", newjson)
+                .post("http://localhost:8080/firstRound/priority", list)
                 .success(function (data, status) {
                     var showInfo = true;
                     if (status == 200) {
