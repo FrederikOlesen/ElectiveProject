@@ -44,8 +44,8 @@ angular.module('myAppRename.view3', ['ngRoute'])
         $scope.anyItemOpen = function () {
             return $scope.opened !== undefined;
         };
-        $scope.addToFirstPriority = function (title, description, teacher, pri) {
-            var json = {"Title": title, "Description": description, "Teacher": teacher, "Priority": pri}
+        $scope.addToFirstPriority = function (title, description, teacher, pri, id) {
+            var json = {"Priority": pri, "Id" : id, "Title": title, "Description": description, "Teacher": teacher}
 
 
             if (alength > 2) {
@@ -64,8 +64,8 @@ angular.module('myAppRename.view3', ['ngRoute'])
                 $scope.buttonStateFirst = "btn-lg disabled"
             }
         }
-        $scope.addToSecondPriority = function (title, description, teacher, pri) {
-            var json = {"Title": title, "Description": description, "Teacher": teacher, "Priority": pri}
+        $scope.addToSecondPriority = function (title, description, teacher, pri, id) {
+            var json = {"Priority": pri, "Id" : id, "Title": title, "Description": description, "Teacher": teacher}
             if (blength > 2) {
                 $scope.baPriority = json;
                 blength = 1
@@ -129,10 +129,9 @@ angular.module('myAppRename.view3', ['ngRoute'])
             console.log(angular.toJson(list));
         };
 
-        $scope.voteFirstRound = function () {
+        $scope.voteFirstRound = function (studentId) {
 
-            var newjson = angular.toJson(list);
-
+            console.log(angular.toJson(list));
 
 
             $http
