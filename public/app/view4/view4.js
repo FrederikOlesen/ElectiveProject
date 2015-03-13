@@ -16,8 +16,17 @@ angular.module('myAppRename.view4', ['ngRoute'])
 
         }).
             success(function (data) {
-                console.log("Data: " + angular.toJson(data));
-                $scope.result = data;
+                var map = {};
+                for(var i = 0; i < data.length; i++){
+                    map = map[data[i].title] = data[i].priority
+                    console.log("Map: " + map)
+                }
+
+                console.log("Data: " + map)
+
+                $scope.result = data[6].priority
+                $scope.subjects = data[0].title
+
             }).
             error(function (status) {
                 var showInfo = true;

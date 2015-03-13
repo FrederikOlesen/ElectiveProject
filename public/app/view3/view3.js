@@ -45,7 +45,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
             return $scope.opened !== undefined;
         };
         $scope.addToFirstPriority = function (title, description, teacher, pri, id) {
-            var json = {"Priority": pri, "Id" : id, "Title": title, "Description": description, "Teacher": teacher}
+            var json = {"priority": pri, "studentId" : id, "title": title, "description": description, "teacher": teacher}
 
 
             if (alength > 2) {
@@ -65,7 +65,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
             }
         }
         $scope.addToSecondPriority = function (title, description, teacher, pri, id) {
-            var json = {"Priority": pri, "Id" : id, "Title": title, "Description": description, "Teacher": teacher}
+            var json = {"priority": pri, "studentId" : id, "title": title, "description": description, "teacher": teacher}
             if (blength > 2) {
                 $scope.baPriority = json;
                 blength = 1
