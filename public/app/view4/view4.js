@@ -12,13 +12,13 @@ angular.module('myAppRename.view4', ['ngRoute'])
     .controller('View4Ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/firstRound/priority'
+            url: 'http://localhost:9292/firstRound/priority'
 
         }).
             success(function (data) {
                 var map = {};
                 for(var i = 0; i < data.length; i++){
-                    map = map[data[i].title] = data[i].priority
+                    map = map[data[i].title] = "1";
                     console.log("Map: " + map)
                 }
 

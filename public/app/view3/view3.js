@@ -15,7 +15,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
         var list = [];
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/firstRound/subject'
+            url: 'http://localhost:9292/firstRound/subject'
 
         }).success(function (data) {
             console.log("JSON: " + angular.toJson(data));
@@ -135,7 +135,7 @@ angular.module('myAppRename.view3', ['ngRoute'])
 
 
             $http
-                .post("http://localhost:8080/firstRound/priority", list)
+                .post("http://localhost:9292/firstRound/priority", list)
                 .success(function (data, status) {
                     var showInfo = true;
                     if (status == 200) {
