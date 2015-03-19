@@ -129,20 +129,11 @@ angular.module('myAppRename.view4', ['ngRoute'])
             console.log(angular.toJson(list));
         };
         $scope.getHappiness = function () {
-
-            var a1 = list[0].title;
-            var a2 = list[1].title;
-            var a3 = list[2].title;
-            var a4 = list[3].title;
-
-            var json = {"poolA": [a1, a2],"poolB": [a1, a2],
+            var json = {"poolA": [list[0].title, list[1].title],"poolB": [list[2].title, list[3].title],
                 "studentID": ["Bjarke Carlsen","Martin Olgenkjær","Henrik Stavnem","Nicklas Thomsen"]}
-
-            console.log(json);
             $http
                 .post("http://localhost:9292/firstRound/happiness", json)
                 .success(function (data, status) {
-
                     $scope.result = data;
                 })
                 .error(function (data, status, error) {
